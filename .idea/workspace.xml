@@ -7,6 +7,7 @@
     <list default="true" id="50950d72-d956-4a03-9d7f-2a48e3de8294" name="Changes" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/STIStock.py" beforeDir="false" afterPath="$PROJECT_DIR$/STIStock.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/currentbuy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/currentbuy.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/currentsell.txt" beforeDir="false" afterPath="$PROJECT_DIR$/currentsell.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
