@@ -5,34 +5,42 @@ import Functions
 import time
 
 st.title('STI Stock Analysis')
-
-st.sidebar.header('Types of Analysis')
-
-#bollinger
-#if st button true
-button1 = st.sidebar.button('Bollinger Analysis')
-
-#if button is True:
-if button1:
-    with st.spinner('Fetching Data...'):
-        result = Functions.bollinger()
-        time.sleep(5)
-    st.write('Bollinger Done!')
+st.write('This app screens all the constituents of Singapore Straits Times Index based on the chosen analysis type and gives a buy/sell signal')
 
 
 
-button2 = st.sidebar.button('RSI Analysis')
-if button2:
-    with st.spinner('Fetching Data...'):
-        result = Functions.rsical()
-        st.write('Status: RSI Analysis Done!')
 
-#MA Analysis Button
-button3 = st.sidebar.button('MA Analysis')
-if button3:
-   with st.spinner('Fetching Data...'):
-       result = Functions.MA()
-       st.write('Status: MA Analysis Done!git pull --allow-unrelated-histories  ')
+with st.sidebar:
+    st.header('Types of Analysis')
+
+    # bollinger
+    # if st button true
+    button1 = st.button('Bollinger Analysis')
+
+    # if button is True:
+    if button1:
+        with st.spinner('Fetching Data...'):
+            result = Functions.bollinger()
+            time.sleep(5)
+        st.write('Bollinger Done!')
+
+    button2 = st.button('RSI Analysis')
+    if button2:
+        with st.spinner('Fetching Data...'):
+            result = Functions.rsical()
+            st.write('Status: RSI Analysis Done!')
+
+    # MA Analysis Button
+    button3 = st.button('MA Analysis')
+    if button3:
+        with st.spinner('Fetching Data...'):
+            result = Functions.MA()
+            st.write('Status: MA Analysis Done!git pull --allow-unrelated-histories  ')
+
+    with st.expander('Read more'):
+        st.write('Bollinger Analysis assess whether the Closing price is outside the Bollinger band.')
+        st.write('RSI assesses whether the relative strength index is higher than 70 or lower than 30.')
+        st.write('MA assesses whether the 20MA is higher/lower than the 50MA')
 
 #printing the currentbuylist
 st.subheader('Current Buy/sell List')
@@ -87,6 +95,3 @@ with placeholder3.container():
         for items in sell:
             st.write(items)
 
-
-
-st.session_state

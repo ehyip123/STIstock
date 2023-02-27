@@ -1,2 +1,4 @@
 Bollinger: C52.SI 
+ RSI: 
+ MA: C52.SI C38U.SI Z74.SI BN4.SI C09.SI F34.SI 
  
