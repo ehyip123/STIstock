@@ -4,105 +4,89 @@ import pandas as pd
 import Functions
 import time
 
-STI_watchlist = ['C52.SI', '9CI.SI', 'BUOU.SI', 'ME8U.SI', 'C38U.SI', 'M44U.SI', 'O39.SI', 'U14.SI', 'D05.SI',
-                     'A17U.SI', 'Z74.SI', 'D01.SI', 'BN4.SI', 'S63.SI', 'U96.SI', 'S68.SI', 'V03.SI', 'S58.SI',
-                     'Y92.SI', 'C07.SI', 'C09.SI', 'N2IU.SI', 'H78.SI', 'F34.SI', 'J36.SI', 'YF8.SI', 'G13.SI', 'AJBU.SI',
-                     'BS6.SI']
+st.title('STI Stock Analysis')
 
-#codes for bollinger
+st.sidebar.header('Types of Analysis')
 
-def bollinger():
-    for stock in STI_watchlist:
+#bollinger
+#if st button true
+button1 = st.sidebar.button('Bollinger Analysis')
 
-        data = yf.download(stock, period='1year')
-        Closing = (data['Close'].values)
-
-        stock_info = yf.Ticker(stock)
-        stock_data = stock_info.history
-        twentyMA = (round(stock_info.history(period="20d", interval="1d").mean(), 2)['Close'])
-        stddev = stock_info.history(period="20d", interval="1d")['Close'].std(ddof=0)
-        topband = twentyMA + 2 * stddev
-        lowerband = twentyMA - 2 * stddev
-
-        if Closing > topband:
-            sell = Functions.write_file('*' + stock,filepath = 'sell.txt')
-
-        if Closing < lowerband:
-            buy = Functions.write_file('*' + stock,filepath = 'buy.txt')
-
-        else:
-            pass
-
-bollinger()
+#if button is True:
+if button1:
+    with st.spinner('Fetching Data...'):
+        result = Functions.bollinger()
+        time.sleep(5)
+    st.write('Bollinger Done!')
 
 
-#codes for rsi
-def rsical():
-    for stock in STI_watchlist:
-        rsi_period = 14
-        data_df = yf.download(stock, period='1y')
-        data_df = pd.DataFrame(data_df['Close'])
-        data_df.reset_index(inplace=True)
-        # find out whats the difference in closing price
-        change = data_df['Close'].diff(1)
-        # hide those negative numbers
-        gain = change.mask(change < 0, 0)
-        data_df['gain'] = gain
-        # hide positive numbers
-        loss = change.mask(change > 0, 0)
-        data_df['loss'] = loss
 
-        avg_gain = gain.ewm(com=rsi_period - 1, min_periods=rsi_period).mean()
-        data_df['avg_gain'] = avg_gain
-        avg_loss = loss.ewm(com=rsi_period - 1, min_periods=rsi_period).mean()
-        data_df['avg_loss'] = avg_loss
+button2 = st.sidebar.button('RSI Analysis')
+if button2:
+    with st.spinner('Fetching Data...'):
+        result = Functions.rsical()
+        st.write('Status: RSI Analysis Done!')
 
-        relativestrength = abs(avg_gain) / abs(avg_loss)
-        rsi = 100 - (100 / (1 + relativestrength))
-        data_df['rsi'] = rsi
+#MA Analysis Button
+button3 = st.sidebar.button('MA Analysis')
+if button3:
+   with st.spinner('Fetching Data...'):
+       result = Functions.MA()
+       st.write('Status: MA Analysis Done!git pull --allow-unrelated-histories  ')
 
-        latest_rsi = round(data_df.iloc[-1, -1], 2)
-        #print(stock, latest_rsi)
+#printing the currentbuylist
+st.subheader('Current Buy/sell List')
+st.write('Buy')
 
-        if latest_rsi > 60:
-            sell = Functions.write_file('/'+ stock, 'sell.txt')
+currentbuy = Functions.get_list('currentbuy.txt')
+currentsell = Functions.get_list('currentsell.txt')
 
-        elif latest_rsi < 32:
-            buy = Functions.write_file('/'+ stock, 'buy.txt')
+placeholder1 = st.empty()
+with placeholder1.container():
+    for items in currentbuy:
+        st.write(items)
 
-        else:
-            pass
+#printing the currentselllist
+st.write('Sell')
+placeholder2=st.empty()
+with placeholder2.container():
+    for items in currentsell:
+        st.write(items)
 
-rsical()
+#clearcurrentlist
+if st.button('Clear current list'):
+    f = open('currentbuy.txt',"w")
+    f = open('currentsell.txt', "w")
+    placeholder1.empty()
+    placeholder2.empty()
+    f.close()
 
-# buy if 20MA>50MA
-def MA():
-    for stock in STI_watchlist:
-        stock_info = yf.Ticker(stock)
-        stock_data = stock_info.history
-        fiftyMA = round(stock_info.history(period="50d", interval="1d").mean(), 2)
-        twentyMA = round(stock_info.history(period="20d", interval="1d").mean(), 2)
+#add to record
+placeholder3 = st.empty()
+with placeholder3.container():
+    if st.button('Add to records'):
+        #read current list and append to buy.txt
+        currentbuyitems = Functions.get_list('currentbuy.txt')
+        for item in currentbuyitems:
+            newbuylist = Functions.write_file(item, filepath='buy.txt')
 
-        if (twentyMA['Close'])> (fiftyMA['Close']):
-            buy = Functions.write_file(stock, 'buy.txt')
+        currentsellitems = Functions.get_list('currentsell.txt')
+        for item in currentsellitems:
+            newselllist = Functions.write_file(item, filepath = 'sell.txt')
 
-        elif (twentyMA['Close']) < (fiftyMA['Close']):
-            sell = Functions.write_file(stock, 'sell.txt')
-        else:
-            pass
-MA()
+        #open updated buy/sell.txt and print
+        st.subheader('Buy List:')
+        buy = Functions.get_list('buy.txt')
+        st.write(time.strftime('%d-%m-%Y'))
+        for items in buy:
+            st.write(items)
+
+        st.subheader('Sell list:')
+        sell = Functions.get_list('sell.txt')
+        st.write(time.strftime('%d-%m-%Y'))
+        for items in sell:
+            st.write(items)
 
 
-st.write('MA buy list:')
-buy = Functions.get_buy('buy.txt')
-st.write(time.strftime('%d-%m-%Y'))
-for items in buy:
-    st.write(items)
-
-st.write('MA sell list:')
-sell = Functions.get_sell('sell.txt')
-st.write(time.strftime('%d-%m-%Y'))
-for items in sell:
-    st.write(items)
 
 st.session_state
