@@ -1,0 +1,7 @@
+RSI: 
+  MA: 
+  D05.SI - DBS [chart](https://finance.yahoo.com/quote/D05.SI?p=D05.SI&.tsrc=fin-srch) 
+  V03.SI - Venture Corp [chart](https://finance.yahoo.com/quote/V03.SI?p=V03.SI&.tsrc=fin-srch) 
+  C09.SI - City Developments [chart](https://finance.yahoo.com/quote/C09.SI?p=C09.SI&.tsrc=fin-srch) 
+  F34.SI - Wilmar International [chart](https://finance.yahoo.com/quote/F34.SI?p=F34.SI&.tsrc=fin-srch) 
+   
