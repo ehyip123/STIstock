@@ -1,0 +1,6 @@
+Bollinger: 
+ D05.SI - DBS [chart](https://finance.yahoo.com/quote/D05.SI?p=D05.SI&.tsrc=fin-srch) 
+ V03.SI - Venture Corp [chart](https://finance.yahoo.com/quote/V03.SI?p=V03.SI&.tsrc=fin-srch) 
+ Y92.SI - Thai Beverage [chart](https://finance.yahoo.com/quote/Y92.SI?p=Y92.SI&.tsrc=fin-srch) 
+ YF8.SI - Yangzijiang Financial Holding Ltd [chart](https://finance.yahoo.com/quote/YF8.SI?p=YF8.SI&.tsrc=fin-srch) 
+ 

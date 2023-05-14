@@ -5,10 +5,7 @@ import Functions
 import time
 
 st.title('STI Stock Analysis')
-st.write('This app screens all the constituents of Singapore Straits Times Index based on the chosen analysis type and gives a buy/sell signal')
-
-
-
+st.write('This app screens all the constituents of Singapore Straits Times Index based on the chosen analysis type and gives a buy/sell signal. Click the side bar to start the analysis!')
 
 with st.sidebar:
     st.header('Types of Analysis')
@@ -35,7 +32,7 @@ with st.sidebar:
     if button3:
         with st.spinner('Fetching Data...'):
             result = Functions.MA()
-            st.write('Status: MA Analysis Done!git pull --allow-unrelated-histories  ')
+            st.write('Status: MA Analysis Done!')
 
     with st.expander('Read more'):
         st.write('Bollinger Analysis assess whether the Closing price is outside the Bollinger band.')
@@ -44,18 +41,19 @@ with st.sidebar:
 
 #printing the currentbuylist
 st.subheader('Current Buy/sell List')
-st.write('Buy')
 
 currentbuy = Functions.get_list('currentbuy.txt')
 currentsell = Functions.get_list('currentsell.txt')
 
+#print current buy list
+st.write('**Buy**')
 placeholder1 = st.empty()
 with placeholder1.container():
     for items in currentbuy:
         st.write(items)
 
 #printing the currentselllist
-st.write('Sell')
+st.write('**Sell**')
 placeholder2=st.empty()
 with placeholder2.container():
     for items in currentsell:
