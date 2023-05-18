@@ -1,2 +1,5 @@
 RSI: 
+ C6L.SI - Singapore Airlines [chart](https://sg.finance.yahoo.com/quote/C6L.SI?p=C6L.SI&.tsrc=fin-srch) | Latest RSI : 76.91 
+ U96.SI - Sembcorp [chart](https://finance.yahoo.com/quote/U96.SI?p=U96.SI&.tsrc=fin-srch) | Latest RSI : 77.52 
+ C07.SI - Jardine Cycle & Carriage [chart](https://finance.yahoo.com/quote/C07.SI?p=C07.SI&.tsrc=fin-srch) | Latest RSI : 72.89 
  

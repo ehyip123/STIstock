@@ -1,14 +1,4 @@
 RSI: 
- D05.SI - DBS [chart](https://finance.yahoo.com/quote/D05.SI?p=D05.SI&.tsrc=fin-srch)
-            RSI = 22.35
-             
- V03.SI - Venture Corp [chart](https://finance.yahoo.com/quote/V03.SI?p=V03.SI&.tsrc=fin-srch)
-            RSI = 20.12
-             
- Y92.SI - Thai Beverage [chart](https://finance.yahoo.com/quote/Y92.SI?p=Y92.SI&.tsrc=fin-srch)
-            RSI = 25.89
-             
- YF8.SI - Yangzijiang Financial Holding Ltd [chart](https://finance.yahoo.com/quote/YF8.SI?p=YF8.SI&.tsrc=fin-srch)
-            RSI = 27.73
-             
+ D05.SI - DBS [chart](https://finance.yahoo.com/quote/D05.SI?p=D05.SI&.tsrc=fin-srch) | RSI = 24.77 
+ V03.SI - Venture Corp [chart](https://finance.yahoo.com/quote/V03.SI?p=V03.SI&.tsrc=fin-srch) | RSI = 21.51 
  
